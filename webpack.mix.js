@@ -4,6 +4,14 @@ const mix = require('laravel-mix');
 const webpack = require('webpack');
 
 mix.webpackConfig({
+    resolve: {
+        extensions: ['.ts', '.js', '.json'],
+        alias: {
+            '@': __dirname + '/resources/js',
+            '@components': __dirname + '/resources/js/components',
+            '@sass': __dirname + '/resources/sass'
+        },
+    },
     module: {
         rules: [
             {
@@ -13,14 +21,6 @@ mix.webpackConfig({
                 test: /\.(js|vue)?$/
             },
         ]
-    },
-    resolve: {
-        extensions: ['.js', '.json'],
-        alias: {
-            '@': __dirname + '/resources/js',
-            '@components': __dirname + '/resources/js/components',
-            '@sass': __dirname + '/resources/sass'
-        },
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -33,7 +33,7 @@ mix.webpackConfig({
 });
 
 // TODO: prod dev 버전 분리
-mix.js('resources/js/app.js', 'public/js').react().sourceMaps();
+mix.ts('resources/js/app.tsx', 'public/js').react().sourceMaps();
 
 mix.options({
     processCssUrls: false
