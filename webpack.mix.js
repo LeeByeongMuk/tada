@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 mix.webpackConfig({
     resolve: {
-        extensions: ['.ts', '.js', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.json'],
         alias: {
             '@': __dirname + '/resources/js',
             '@components': __dirname + '/resources/js/components',
@@ -18,7 +18,7 @@ mix.webpackConfig({
                 enforce: 'pre',
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
-                test: /\.(js|vue)?$/
+                test: /\.(js|jsx|tsx|vue)?$/
             },
         ]
     },

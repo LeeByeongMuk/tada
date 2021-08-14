@@ -1,11 +1,17 @@
 {
     "compilerOptions": {
+        "baseUrl": "./resources",
+        "paths": {
+            "@/*": ["js/*"]
+        },
         "target": "es5",
         "module": "commonjs",
         "jsx": "react",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
-    }
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": false,
+    },
+    "exclude": ["node_modules"]
 }
