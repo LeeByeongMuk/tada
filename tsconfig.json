@@ -11,7 +11,9 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "noImplicitAny": false,
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "allowJs": true
     },
     "exclude": ["node_modules"]
 }
