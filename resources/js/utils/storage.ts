@@ -1,9 +1,9 @@
-const storage = {
-    set: (key, object) => {
+const storage: object = {
+    set: (key: string, object: object | string) => {
         if(!localStorage) return;
         localStorage[key] = (typeof object) === 'string' ? object : JSON.stringify(object);
     },
-    get: (key) => {
+    get: (key: string) => {
         if(!localStorage) return null;
 
         if(!localStorage[key]) {
@@ -11,13 +11,13 @@ const storage = {
         }
 
         try {
-            const parsed = JSON.parse(localStorage[key]);
+            const parsed: object = JSON.parse(localStorage[key]);
             return parsed;
         } catch(e) {
             return localStorage[key];
         }
     },
-    remove: (key) => {
+    remove: (key: string) => {
         if(!localStorage) return null;
 
         if(localStorage[key]) {
