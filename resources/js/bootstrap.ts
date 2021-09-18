@@ -1,5 +1,13 @@
 import axios from "axios";
 
+declare global {
+    interface Window {
+        $: any;
+        jQuery: any;
+        axios: any;
+    }
+}
+
 window.$ = window.jQuery = require('jquery');
 
 window.axios = axios;
