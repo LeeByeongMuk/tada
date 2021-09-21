@@ -1,4 +1,4 @@
-export function formatDifficulty(difficulty) {
+export function formatDifficulty(difficulty: string) : string {
     switch (difficulty) {
         case 'beginner':
             return '초보자';
@@ -11,7 +11,7 @@ export function formatDifficulty(difficulty) {
     }
 }
 
-export function formatAltitude(altitude) {
+export function formatAltitude(altitude: string) : string {
     switch (altitude) {
         case 'flat':
             return '평지';
