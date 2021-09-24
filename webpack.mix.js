@@ -4,23 +4,31 @@ const mix = require('laravel-mix');
 const webpack = require('webpack');
 
 mix.webpackConfig({
-    resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json'],
-        alias: {
-            '@': __dirname + '/resources/js',
-            '@components': __dirname + '/resources/js/components',
-            '@sass': __dirname + '/resources/sass'
-        },
-    },
+    devtool: 'source-map',
     module: {
         rules: [
             {
                 enforce: 'pre',
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
-                test: /\.(js|jsx|tsx|vue)?$/
+                test: /\.(js|jsx|tsx|ts)?$/
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true
+                }
             },
         ]
+    },
+    resolve: {
+        extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"],
+        alias: {
+            '@': __dirname + '/resources/js',
+            '@components': __dirname + '/resources/js/components',
+            '@sass': __dirname + '/resources/sass'
+        },
     },
     plugins: [
         new webpack.DefinePlugin({

@@ -6,12 +6,17 @@ module.exports = {
         jquery: true,
     },
     extends: ['eslint:recommended', 'plugin:react/recommended'],
+    parser: '@babel/eslint-parser',
     parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        requireConfigFile: false,
         ecmaFeatures: {
             jsx: true,
         },
-        ecmaVersion: 12,
-        sourceType: 'module',
+        babelOptions: {
+            presets: ['@babel/preset-react'],
+        },
     },
     plugins: ['react', 'prettier', '@typescript-eslint'],
     rules: {
