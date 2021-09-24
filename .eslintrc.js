@@ -1,36 +1,39 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true,
-        "commonjs": true
+    env: {
+        browser: true,
+        es2021: true,
+        commonjs: true,
+        jquery: true,
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
+    extends: ['eslint:recommended', 'plugin:react/recommended'],
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
         },
-        "ecmaVersion": 12,
-        "sourceType": "module"
+        ecmaVersion: 12,
+        sourceType: 'module',
     },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "react/display-name": "off",
-        "react/prop-types": "off",
-        "react/no-children-prop": "off",
-        "semi": [
-            "error",
-            "always"
-        ]
+    plugins: ['react', 'prettier', '@typescript-eslint'],
+    rules: {
+        'react/display-name': 'off',
+        'react/prop-types': 'off',
+        'react/no-children-prop': 'off',
+        'prettier/prettier': [
+            'error',
+            {
+                singleQuote: true,
+                semi: true,
+                useTabs: false,
+                tabWidth: 4,
+                printWidth: 80,
+                // bracketSpacing: true,
+                arrowParens: 'avoid',
+            },
+        ],
     },
-    "globals": {
-        "env": true,
-        "$": true,
-        "axios": true
+    globals: {
+        env: true,
+        $: true,
+        axios: true,
     },
 };
