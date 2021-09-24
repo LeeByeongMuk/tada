@@ -1,22 +1,22 @@
-import request from "@/api/request";
+import request from '@/api/request';
 
 const getListUrl = '/api/ride';
 const getCreateListUrl = '/api/account/manage';
 
-const getList = async ({...options}) => {
+const getList = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'get',
             url: getListUrl,
-            ...options
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
-            const {data} = response.rides;
+            const { data } = response.rides;
             return {
                 success: true,
-                data: data
+                data: data,
             };
         } else {
             throw response.response.data;
@@ -24,25 +24,25 @@ const getList = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-const getCreateList = async ({...options}) => {
+const getCreateList = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'get',
             url: getCreateListUrl,
-            ...options
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
-            const {data} = response.rides;
+            const { data } = response.rides;
             return {
                 success: true,
-                data: data
+                data: data,
             };
         } else {
             throw response.response.data;
@@ -50,12 +50,9 @@ const getCreateList = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-export {
-    getList,
-    getCreateList
-};
+export { getList, getCreateList };

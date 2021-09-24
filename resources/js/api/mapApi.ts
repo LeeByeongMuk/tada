@@ -1,20 +1,20 @@
-import request from "@/api/request";
+import request from '@/api/request';
 
 const gerReverseGeocodeUrl = '/api/reverse-geocode';
 
-const getReverseGeocode = async ({...options}) => {
+const getReverseGeocode = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'get',
             url: gerReverseGeocodeUrl,
-            ...options
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -22,11 +22,9 @@ const getReverseGeocode = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-export {
-    getReverseGeocode
-};
+export { getReverseGeocode };

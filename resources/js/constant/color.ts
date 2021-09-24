@@ -1,4 +1,4 @@
-const color = {};
+let color = {};
 
 color.pageColor = '#444';
 color.bgGray = 'rgb(51, 51, 51)';

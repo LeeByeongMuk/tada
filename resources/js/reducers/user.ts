@@ -1,13 +1,18 @@
-import {combineReducers} from "redux";
-import {LOGIN_NON, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE} from "@/actions/user";
+import { combineReducers } from 'redux';
+import {
+    LOGIN_NON,
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+} from '@/actions/user';
 
 const defaultState = {
     isLoggedIn: false,
     fetchingUpdate: false,
-    info: {}
+    info: {},
 };
 
-const userReducer = (state = defaultState, action) => {
+const userReducer = (state = defaultState, action: any) => {
     switch (action.type) {
         case LOGIN_NON:
             return {
@@ -19,7 +24,7 @@ const userReducer = (state = defaultState, action) => {
         case LOGIN_REQUEST:
             return {
                 ...state,
-                fetchingUpdate: true
+                fetchingUpdate: true,
             };
         case LOGIN_SUCCESS:
             return {
@@ -30,7 +35,7 @@ const userReducer = (state = defaultState, action) => {
             };
         case LOGIN_FAILURE:
             return {
-                ...state
+                ...state,
             };
         default:
             return state;
@@ -38,5 +43,5 @@ const userReducer = (state = defaultState, action) => {
 };
 
 export default combineReducers({
-    user: userReducer
+    user: userReducer,
 });

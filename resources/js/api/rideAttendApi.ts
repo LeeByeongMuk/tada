@@ -1,21 +1,21 @@
-import request from "@/api/request";
+import request from '@/api/request';
 
-const rideCreateUrl = '/api/ride';
+const getAttendRidesUrl = '/api/account/attend';
 
-const getRideData = async ({id}) => {
-    const url = `/api/ride/${id}`;
-
+const getAttendRides = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'get',
-            url: url
+            url: getAttendRidesUrl,
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
+            const { data } = response.rides;
             return {
                 success: true,
-                data: response
+                data: data,
             };
         } else {
             throw response.response.data;
@@ -23,50 +23,25 @@ const getRideData = async ({id}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-const getRideEditData = async ({id}) => {
-    const url = `/api/ride/${id}/edit`;
-
-    try {
-        const response = await request({
-            method: 'get',
-            url: url
-        });
-        const {isError} = response;
-
-        if (!isError) {
-            return {
-                success: true,
-                data: response
-            };
-        } else {
-            throw response.response.data;
-        }
-    } catch (err) {
-        return {
-            success: false,
-            data: err
-        };
-    }
-};
-
-const rideCreate = async ({...options}) => {
+const rideAttendUrl = '/api/ride/attend';
+const rideAttend = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'post',
-            url: rideCreateUrl,
-            ...options
+            url: rideAttendUrl,
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -74,27 +49,76 @@ const rideCreate = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-const rideUpdate = async ({...options}) => {
-    const id = options.data.id;
-    const url = `/api/ride/${id}`;
-
+const rideCancelUrl = '/api/ride/cancel';
+const rideAttendCancel = async ({ ...options }) => {
     try {
         const response = await request({
-            method: 'put',
+            method: 'post',
+            url: rideCancelUrl,
+            ...options,
+        });
+        const { isError } = response;
+
+        if (!isError) {
+            return {
+                success: true,
+                data: response,
+            };
+        } else {
+            throw response.response.data;
+        }
+    } catch (err) {
+        return {
+            success: false,
+            data: err,
+        };
+    }
+};
+
+const getAttendStatusUrl = '/api/user/participation';
+const getAttendStatus = async ({ ...options }) => {
+    try {
+        const response = await request({
+            method: 'get',
+            url: getAttendStatusUrl,
+            ...options,
+        });
+        const { isError } = response;
+
+        if (!isError) {
+            return {
+                success: true,
+                data: response,
+            };
+        } else {
+            throw response.response.data;
+        }
+    } catch (err) {
+        return {
+            success: false,
+            data: err,
+        };
+    }
+};
+
+const getAttendEntry = async ({ id }) => {
+    try {
+        const url = `/api/account/${id}/entry`;
+        const response = await request({
+            method: 'get',
             url: url,
-            ...options
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -102,41 +126,15 @@ const rideUpdate = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
-        };
-    }
-};
-
-const rideDelete = async ({id}) => {
-    const url = `/api/ride/${id}`;
-
-    try {
-        const response = await request({
-            method: 'delete',
-            url: url
-        });
-        const {isError} = response;
-
-        if (!isError) {
-            return {
-                success: true,
-                data: response
-            };
-        } else {
-            throw response.response.data;
-        }
-    } catch (err) {
-        return {
-            success: false,
-            data: err
+            data: err,
         };
     }
 };
 
 export {
-    getRideData,
-    getRideEditData,
-    rideCreate,
-    rideUpdate,
-    rideDelete
+    getAttendRides,
+    rideAttend,
+    rideAttendCancel,
+    getAttendStatus,
+    getAttendEntry,
 };

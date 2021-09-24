@@ -1,4 +1,4 @@
-const scrollPaging = (isLoading: boolean, callback: any) : void => {
+const scrollPaging = (isLoading: boolean, callback: any): void => {
     if (!isLoading) {
         const scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
         const clientHeight = document.documentElement.clientHeight;

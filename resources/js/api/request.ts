@@ -1,24 +1,24 @@
-import axios from "axios";
+import axios from 'axios';
 
-const request = async (options) => {
+const request = async options => {
     try {
         const response = await axios(options);
-        const {statusText} = response;
+        const { statusText } = response;
 
         if (statusText === 'OK') {
             return {
                 isError: false,
-                ...response.data
+                ...response.data,
             };
         } else {
             throw response;
         }
-    } catch ({...err}) {
+    } catch ({ ...err }) {
         const message = err.response.data.message;
         return {
             isError: true,
             message: message,
-            ...err
+            ...err,
         };
     }
 };

@@ -1,19 +1,19 @@
-import request from "@/api/request";
+import request from '@/api/request';
 
 const commentCreateUrl = '/api/comment';
-const commentCreate = async ({...options}) => {
+const commentCreate = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'post',
             url: commentCreateUrl,
-            ...options
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -21,24 +21,24 @@ const commentCreate = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-const commentDelete = async ({id}) => {
+const commentDelete = async ({ id }) => {
     try {
         const url = `/api/comment/${id}`;
         const response = await request({
             method: 'delete',
-            url: url
+            url: url,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -46,12 +46,9 @@ const commentDelete = async ({id}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-export {
-    commentCreate,
-    commentDelete
-};
+export { commentCreate, commentDelete };

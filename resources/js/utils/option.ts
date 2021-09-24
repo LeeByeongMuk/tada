@@ -1,4 +1,4 @@
-import {formatDigit} from "@/utils/dateFormat";
+import { formatDigit } from '@/utils/dateFormat';
 
 const timeOptions = (() => {
     let options = [];
@@ -8,7 +8,7 @@ const timeOptions = (() => {
             let value = `${formatDigit(i)}:${formatDigit(s)}`;
             let option = {
                 value: value,
-                text: value
+                text: value,
             };
 
             options.push(option);
@@ -19,19 +19,19 @@ const timeOptions = (() => {
 })();
 
 const difficultyOptions = (() => {
-    let options = [
+    let options: any = [
         {
             value: 'beginner',
-            text: '초보자'
+            text: '초보자',
         },
         {
             value: 'intermediate',
-            text: '중급자'
+            text: '중급자',
         },
         {
             value: 'advanced',
-            text: '숙련자'
-        }
+            text: '숙련자',
+        },
     ];
 
     return options;
@@ -41,23 +41,19 @@ const altitudeOptions = (() => {
     let options = [
         {
             value: 'flat',
-            text: '평지'
+            text: '평지',
         },
         {
             value: 'uphill',
-            text: '업힐'
+            text: '업힐',
         },
         {
             value: 'mountain',
-            text: '산'
-        }
+            text: '산',
+        },
     ];
 
     return options;
 })();
 
-export {
-    timeOptions,
-    difficultyOptions,
-    altitudeOptions
-};
+export { timeOptions, difficultyOptions, altitudeOptions };

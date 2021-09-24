@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
-import {Route, useHistory} from 'react-router-dom';
-import storage from "@/utils/storage";
-import {getUserStatus} from "@/api/userApi";
+import React, { useEffect } from 'react';
+import { Route, useHistory } from 'react-router-dom';
+import storage from '@/utils/storage';
+import { getUserStatus } from '@/api/userApi';
 
-const AuthRoute = ({check = null, ...props}) => {
+const AuthRoute = ({ check = null, ...props }) => {
     const history = useHistory();
 
     const authCheck = async () => {
@@ -11,7 +11,7 @@ const AuthRoute = ({check = null, ...props}) => {
 
         try {
             const response = await getUserStatus();
-            const {success} = response;
+            const { success } = response;
 
             if (check && !success) {
                 alert('로그인후 가능');
