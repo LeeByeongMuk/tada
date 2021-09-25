@@ -2,7 +2,7 @@ import request from '@/api/request';
 
 const rideCreateUrl = '/api/ride';
 
-const getRideData = async ({ id }) => {
+const getRideData = async ({ id }: { id: string }) => {
     const url = `/api/ride/${id}`;
 
     try {
@@ -28,7 +28,7 @@ const getRideData = async ({ id }) => {
     }
 };
 
-const getRideEditData = async ({ id }) => {
+const getRideEditData = async ({ id }: { id: string }) => {
     const url = `/api/ride/${id}/edit`;
 
     try {
@@ -107,7 +107,7 @@ const rideUpdate = async ({ ...options }) => {
     }
 };
 
-const rideDelete = async ({ id }) => {
+const rideDelete = async ({ id }: { id: string }) => {
     const url = `/api/ride/${id}`;
 
     try {

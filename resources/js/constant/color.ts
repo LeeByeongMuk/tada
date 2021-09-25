@@ -1,30 +1,25 @@
-let color = {};
+const color = {
+    pageColor: '#444',
+    bgGray: 'rgb(51, 51, 51)',
+    white: '#fff',
 
-color.pageColor = '#444';
-color.bgGray = 'rgb(51, 51, 51)';
-color.white = '#fff';
+    red: 'rgb(228, 58, 95)',
+    red600: '#c93030',
 
-// red
-color.red = 'rgb(228, 58, 95)';
-color.red600 = '#c93030';
+    blue: 'rgb(31, 64, 104)',
+    blue600: 'rgb(22, 36, 71)',
 
-// blue
-color.blue = 'rgb(31, 64, 104)';
-color.blue600 = 'rgb(22, 36, 71)';
+    gray: '#333',
+    gray400: '#444',
+    gray600: '#666',
+    gray700: '#7e7e7e',
+    gray800: '#888',
+    gray900: '#999',
 
-// gray
-color.gray = '#333';
-color.gray400 = '#444';
-color.gray600 = '#666';
-color.gray700 = '#7e7e7e';
-color.gray800 = '#888';
-color.gray900 = '#999';
+    lightGray: '#f6f6f9',
+    lightGray600: '#ddd',
 
-// light gray
-color.lightGray = '#f6f6f9';
-color.lightGray600 = '#ddd';
-
-// border color
-color.borderColor = '#d8d8d8';
+    borderColor: '#d8d8d8',
+};
 
 export default color;

@@ -15,18 +15,18 @@ export function convertDate(date: string | number | Date): string {
 
 export function formatKR(date: string): string {
     const newDate = date.split(' ');
-    let splitDate = newDate[0].split('-');
-    let splitTime = newDate[1].split(':');
+    const splitDate = newDate[0].split('-');
+    const splitTime = newDate[1].split(':');
 
     return `${splitDate[0]}년 ${splitDate[1]}월 ${splitDate[2]}일 ${splitTime[0]}시 ${splitTime[1]}분`;
 }
 
-export function formatDate(date: string, time: string): string | null {
+export function formatDate(date: Date, time: string): string | null {
     if (!date) return null;
 
-    let year = date.getFullYear();
-    let month = formatDigit(date.getMonth() + 1);
-    let day = formatDigit(date.getDate());
+    const year = date.getFullYear();
+    const month = formatDigit(date.getMonth() + 1);
+    const day = formatDigit(date.getDate());
 
     return `${year}-${month}-${day} ${time}:00`;
 }
@@ -36,21 +36,30 @@ export function formatNaturalDate(date: string): Date {
 
     const newDate = date.split(' ');
 
-    let splitDate: string[] = newDate[0].split('-');
-    let splitTime: string[] = newDate[1].split(':');
+    const splitDate: string[] = newDate[0].split('-');
+    const splitTime: string[] = newDate[1].split(':');
 
-    return new Date(splitDate[0], splitDate[1] - 1, splitDate[2], splitTime[0], splitTime[1], 0);
+    return new Date(
+        splitDate[0],
+        splitDate[1] - 1,
+        splitDate[2],
+        splitTime[0],
+        splitTime[1],
+        0,
+    );
 }
 
-export function getTime(date: string | string[]) {
+export function getTime(date: string | string[]): string {
     if (!date) return '00:00';
 
-    date = date.split(' ');
-    let splitTime = date[1].split(':');
+    if (typeof date === 'string') {
+        date = date.split(' ');
+    }
+    const splitTime = date[1].split(':');
 
     return `${splitTime[0]}:${splitTime[1]}`;
 }
 
-export function formatDigit(date: number) {
-    return date < 10 ? `0${date}` : date;
+export function formatDigit(date: number): number {
+    return date < 10 ? Number(`0${date}`) : date;
 }

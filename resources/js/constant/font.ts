@@ -1,10 +1,9 @@
-const font = {};
-
-font.sizeSmall = '14px';
-font.sizeBase = '16px';
-font.sizeLarge = '18px';
-
-font.color = '#333';
-font.family = '';
+const font = {
+    sizeSmall: '14px',
+    sizeBase: '16px',
+    sizeLarge: '18px',
+    color: '#333',
+    family: '',
+};
 
 export default font;

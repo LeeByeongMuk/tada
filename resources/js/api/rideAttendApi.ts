@@ -106,7 +106,7 @@ const getAttendStatus = async ({ ...options }) => {
     }
 };
 
-const getAttendEntry = async ({ id }) => {
+const getAttendEntry = async ({ id }: { id: string }) => {
     try {
         const url = `/api/account/${id}/entry`;
         const response = await request({

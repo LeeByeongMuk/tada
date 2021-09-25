@@ -1,13 +1,14 @@
 import storage from '@/utils/storage';
 import { loginApi, logoutApi, getUserStatus } from '@/api/userApi';
+import axios from 'axios';
 
 export const LOGIN_NON = 'LOGIN_NON';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const login = (email: any, password: any) => {
-    return async dispatch => {
+export const login = (email: any, password: any): any => {
+    return async (dispatch: any) => {
         dispatch(loginRequest());
 
         try {
@@ -30,7 +31,7 @@ export const login = (email: any, password: any) => {
             } else {
                 throw response;
             }
-        } catch (err) {
+        } catch (err: any) {
             const { message } = err.data;
             storage.set('loggedToken', '');
             storage.set('loggedInfo', '');
@@ -39,15 +40,15 @@ export const login = (email: any, password: any) => {
     };
 };
 
-export const saveLoggedToken = user => {
-    return dispatch => {
+export const saveLoggedToken = (user: { access_token: any }) => {
+    return (dispatch: any) => {
         axios.defaults.headers.common.Authorization = `Bearer ${user.access_token}`;
         dispatch(saveLoggedInfo());
     };
 };
 
 export const saveLoggedInfo = () => {
-    return async dispatch => {
+    return async (dispatch: any) => {
         try {
             const response = await getUserStatus();
             const { success } = response;
@@ -66,7 +67,7 @@ export const saveLoggedInfo = () => {
 };
 
 export const logout = () => {
-    return async dispatch => {
+    return async (dispatch: any) => {
         try {
             const response = await logoutApi();
 
@@ -79,7 +80,7 @@ export const logout = () => {
             } else {
                 throw response;
             }
-        } catch (err) {
+        } catch (err: any) {
             const { message } = err.data;
             alert(message);
         }
@@ -98,7 +99,7 @@ export function loginRequest() {
     };
 }
 
-export function loginSuccess(info) {
+export function loginSuccess(info: any) {
     return {
         type: LOGIN_SUCCESS,
         info,

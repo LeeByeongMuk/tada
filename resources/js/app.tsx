@@ -33,5 +33,5 @@ ReactDOM.render(
         <GlobalStyle />
         <Routes />
     </Provider>,
-    document.getElementById('app')
+    document.getElementById('app'),
 );

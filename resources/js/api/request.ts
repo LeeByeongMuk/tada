@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const request = async options => {
+const request = async (options: any) => {
     try {
         const response = await axios(options);
         const { statusText } = response;

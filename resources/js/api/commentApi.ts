@@ -26,7 +26,7 @@ const commentCreate = async ({ ...options }) => {
     }
 };
 
-const commentDelete = async ({ id }) => {
+const commentDelete = async ({ id }: { id: string }) => {
     try {
         const url = `/api/comment/${id}`;
         const response = await request({

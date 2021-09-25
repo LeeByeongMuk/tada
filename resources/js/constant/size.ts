@@ -1,5 +1,5 @@
-const size = {};
-
-size.screen = '100%';
+const size = {
+    screen: '100%',
+};
 
 export default size;

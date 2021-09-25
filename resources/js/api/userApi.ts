@@ -1,18 +1,18 @@
-import request from "@/api/request";
+import request from '@/api/request';
 
 const getUserStatusUrl = '/api/user';
 const getUserStatus = async () => {
     try {
         const response = await request({
             method: 'get',
-            url: getUserStatusUrl
+            url: getUserStatusUrl,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -20,25 +20,25 @@ const getUserStatus = async () => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
 const loginApiUrl = '/api/login';
-const loginApi = async ({...options}) => {
+const loginApi = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'post',
             url: loginApiUrl,
-            ...options
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -46,25 +46,25 @@ const loginApi = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
 const registerApiUrl = '/api/register';
-const registerApi = async ({...options}) => {
+const registerApi = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'post',
             url: registerApiUrl,
-            ...options
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -72,25 +72,25 @@ const registerApi = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
 const userEditApiUrl = '/api/account';
-const userEditApi = async ({...options}) => {
+const userEditApi = async ({ ...options }) => {
     try {
         const response = await request({
             method: 'put',
             url: userEditApiUrl,
-            ...options
+            ...options,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -98,7 +98,7 @@ const userEditApi = async ({...options}) => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
@@ -108,14 +108,14 @@ const logoutApi = async () => {
     try {
         const response = await request({
             method: 'post',
-            url: logoutApiUrl
+            url: logoutApiUrl,
         });
-        const {isError} = response;
+        const { isError } = response;
 
         if (!isError) {
             return {
                 success: true,
-                data: response
+                data: response,
             };
         } else {
             throw response.response.data;
@@ -123,15 +123,9 @@ const logoutApi = async () => {
     } catch (err) {
         return {
             success: false,
-            data: err
+            data: err,
         };
     }
 };
 
-export {
-    getUserStatus,
-    loginApi,
-    registerApi,
-    userEditApi,
-    logoutApi
-};
+export { getUserStatus, loginApi, registerApi, userEditApi, logoutApi };
