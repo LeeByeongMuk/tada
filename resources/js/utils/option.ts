@@ -8,12 +8,12 @@ interface Item {
 }
 
 const timeOptions = () => {
-    const options = [];
+    const options: Item[] = [];
 
     for (let i = 0; i < 24; i++) {
         for (let s = 0; s < 60; s = s + 5) {
             const value = `${formatDigit(i)}:${formatDigit(s)}`;
-            const option = {
+            const option: Item = {
                 value: value,
                 text: value,
             };

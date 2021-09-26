@@ -6,13 +6,18 @@ import {
     LOGIN_FAILURE,
 } from '@/actions/user';
 
+interface Action {
+    type: string;
+    info: object;
+}
+
 const defaultState = {
     isLoggedIn: false,
     fetchingUpdate: false,
     info: {},
 };
 
-const userReducer = (state = defaultState, action: any) => {
+const userReducer = (state = defaultState, action: Action) => {
     switch (action.type) {
         case LOGIN_NON:
             return {

@@ -11,7 +11,7 @@ import reducers from '@/reducers/user';
 import Routes from '@/routes';
 
 const store = configureStore(reducers);
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle` // TODO: 추후 수정
     body {
         width: 100%;
         min-width: 320px;

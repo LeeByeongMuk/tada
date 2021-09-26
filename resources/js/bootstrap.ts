@@ -1,14 +1,10 @@
-import axios from 'axios';
+import axios, { AxiosStatic } from 'axios';
 
 declare global {
     interface Window {
-        $: any;
-        jQuery: any;
-        axios: any;
+        axios: AxiosStatic;
     }
 }
-
-window.$ = window.jQuery = require('jquery');
 
 window.axios = axios;
 axios.defaults.withCredentials = true;

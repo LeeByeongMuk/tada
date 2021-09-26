@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const request = async (options: any) => {
+const request = async (options: object) => {
     try {
         const response = await axios(options);
         const { statusText } = response;
@@ -13,7 +13,7 @@ const request = async (options: any) => {
         } else {
             throw response;
         }
-    } catch ({ ...err }) {
+    } catch ({ err }) {
         const message = err.response.data.message;
         return {
             isError: true,

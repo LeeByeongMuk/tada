@@ -1,13 +1,13 @@
+import axios from 'axios';
 import storage from '@/utils/storage';
 import { loginApi, logoutApi, getUserStatus } from '@/api/userApi';
-import axios from 'axios';
 
-export const LOGIN_NON = 'LOGIN_NON';
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+const LOGIN_NON = 'LOGIN_NON';
+const LOGIN_REQUEST = 'LOGIN_REQUEST';
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const login = (email: any, password: any): any => {
+const login = (email: string, password: string): any => {
     return async (dispatch: any) => {
         dispatch(loginRequest());
 
@@ -22,7 +22,6 @@ export const login = (email: any, password: any): any => {
 
             if (response.success) {
                 const { data } = response;
-
                 const { token_type, access_token } = data;
                 storage.set('loggedToken', data);
                 axios.defaults.headers.common.Authorization = `${token_type} ${access_token}`;
@@ -40,14 +39,14 @@ export const login = (email: any, password: any): any => {
     };
 };
 
-export const saveLoggedToken = (user: { access_token: any }) => {
+const saveLoggedToken = (user: { access_token: string }) => {
     return (dispatch: any) => {
         axios.defaults.headers.common.Authorization = `Bearer ${user.access_token}`;
         dispatch(saveLoggedInfo());
     };
 };
 
-export const saveLoggedInfo = () => {
+const saveLoggedInfo = () => {
     return async (dispatch: any) => {
         try {
             const response = await getUserStatus();
@@ -66,7 +65,7 @@ export const saveLoggedInfo = () => {
     };
 };
 
-export const logout = () => {
+const logout = () => {
     return async (dispatch: any) => {
         try {
             const response = await logoutApi();
@@ -87,27 +86,42 @@ export const logout = () => {
     };
 };
 
-export function loginNon() {
+function loginNon() {
     return {
         type: LOGIN_NON,
     };
 }
 
-export function loginRequest() {
+function loginRequest() {
     return {
         type: LOGIN_REQUEST,
     };
 }
 
-export function loginSuccess(info: any) {
+function loginSuccess(info: any) {
     return {
         type: LOGIN_SUCCESS,
         info,
     };
 }
 
-export function loginFailure() {
+function loginFailure() {
     return {
         type: LOGIN_FAILURE,
     };
 }
+
+export {
+    LOGIN_NON,
+    LOGIN_REQUEST,
+    LOGIN_FAILURE,
+    LOGIN_SUCCESS,
+    login,
+    saveLoggedToken,
+    saveLoggedInfo,
+    logout,
+    loginNon,
+    loginRequest,
+    loginSuccess,
+    loginFailure,
+};

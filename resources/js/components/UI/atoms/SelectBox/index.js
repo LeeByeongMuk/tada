@@ -1,8 +1,8 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import color from "@/constant/color";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import color from '@/constant/color';
+import font from '@/constant/font';
 
 const StyledSelectBox = styled.select`
     padding-left: 20px;
@@ -15,21 +15,20 @@ const StyledSelectBox = styled.select`
     outline: none;
 `;
 
-const SelectBox = memo(({
-    value,
-    onChange,
-    children,
-    ...props
-}) => {
-    const options = typeof children === 'object' ?
-        children.map(({text, value}) => {
-            return <option value={value} key={value}>{text}</option>;
-        }) : children;
+const SelectBox = memo(({ value, onChange, children, ...props }) => {
+    const options =
+        typeof children === 'object'
+            ? children.map(({ text, value }) => {
+                  return (
+                      <option value={value} key={value}>
+                          {text}
+                      </option>
+                  );
+              })
+            : children;
 
     return (
-        <StyledSelectBox value={value}
-                         onChange={onChange}
-                         {...props}>
+        <StyledSelectBox value={value} onChange={onChange} {...props}>
             {options}
         </StyledSelectBox>
     );
@@ -37,12 +36,12 @@ const SelectBox = memo(({
 
 SelectBox.defaultProps = {
     value: '',
-    children: ''
+    children: '',
 };
 
 SelectBox.propTypes = {
     onChange: PropTypes.func,
-    children: PropTypes.any
+    children: PropTypes.any,
 };
 
 export default SelectBox;

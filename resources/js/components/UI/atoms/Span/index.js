@@ -1,22 +1,18 @@
-import React from "react";
-import styled from "styled-components";
-import font from "@/constant/font";
-import {memo} from "react";
+import React from 'react';
+import styled from 'styled-components';
+import font from '@/constant/font';
+import { memo } from 'react';
 
 const StyledSpan = styled.span`
-    color: ${font.color}
+    color: ${font.color};
 `;
 
-const Span = memo(({children, ...props}) => {
-    return (
-        <StyledSpan {...props}>
-            {children}
-        </StyledSpan>
-    );
+const Span = memo(({ children, ...props }) => {
+    return <StyledSpan {...props}>{children}</StyledSpan>;
 });
 
 Span.defaultProps = {
-    children: ''
+    children: '',
 };
 
 export default Span;
