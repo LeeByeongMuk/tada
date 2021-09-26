@@ -1,23 +1,21 @@
 {
     "compilerOptions": {
         "baseUrl": "./resources",
-        "allowJs": true,
+        "allowJs": false,
         "checkJs": true,
         "target": "es5",
         "lib": ["es2015", "dom", "dom.iterable"],
         "paths": {
-            "@/*": ["js/*"]
+            "@/*": ["js/*"],
+            "@components/*": ["js/components/*"]
         },
-        "module": "commonjs",
+        "module": "es6",
+        "moduleResolution": "node",
         "jsx": "react",
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
-        "allowSyntheticDefaultImports": true,
-        "moduleResolution": "node",
-        // "esModuleInterop": true,
-        // "skipLibCheck": true,
-        // "strictNullChecks": true,
+        "allowSyntheticDefaultImports": true
     },
     "include": ["./resources/js/**/*"],
     "exclude": ["node_modules"]
