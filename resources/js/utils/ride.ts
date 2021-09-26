@@ -1,25 +1,30 @@
-export function formatDifficulty(difficulty: string): string {
+import { DifficultyItem, DifficultyText } from '@/types/difficulty';
+import { AltitudeItem, AltitudeText } from '@/types/altitude';
+
+function formatDifficulty(difficulty: DifficultyItem): string {
     switch (difficulty) {
-        case 'beginner':
-            return '초보자';
-        case 'intermediate':
-            return '중급자';
-        case 'advanced':
-            return '숙련자';
+        case DifficultyItem.beginner:
+            return DifficultyText.beginner;
+        case DifficultyItem.intermediate:
+            return DifficultyText.intermediate;
+        case DifficultyItem.advanced:
+            return DifficultyText.advanced;
         default:
             return '';
     }
 }
 
-export function formatAltitude(altitude: string): string {
+function formatAltitude(altitude: AltitudeItem): string {
     switch (altitude) {
-        case 'flat':
-            return '평지';
-        case 'uphill':
-            return '업힐';
-        case 'mountain':
-            return '산';
+        case AltitudeItem.flat:
+            return AltitudeText.flat;
+        case AltitudeItem.uphill:
+            return AltitudeText.uphill;
+        case AltitudeItem.mountain:
+            return AltitudeText.mountain;
         default:
             return '';
     }
 }
+
+export { formatDifficulty, formatAltitude };

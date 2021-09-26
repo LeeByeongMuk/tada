@@ -1,6 +1,13 @@
+import { DifficultyItem, DifficultyText } from '@/types/difficulty';
 import { formatDigit } from '@/utils/dateFormat';
+import { AltitudeItem, AltitudeText } from '@/types/altitude';
 
-const timeOptions = (() => {
+interface Item {
+    value: string;
+    text: string;
+}
+
+const timeOptions = () => {
     const options = [];
 
     for (let i = 0; i < 24; i++) {
@@ -16,42 +23,38 @@ const timeOptions = (() => {
     }
 
     return options;
-})();
+};
 
-const difficultyOptions = (() => {
-    const options: any = [
-        {
-            value: 'beginner',
-            text: '초보자',
-        },
-        {
-            value: 'intermediate',
-            text: '중급자',
-        },
-        {
-            value: 'advanced',
-            text: '숙련자',
-        },
-    ];
+const timeItems: Item[] = timeOptions();
 
-    return options;
-})();
+const difficultyItems: Item[] = [
+    {
+        value: DifficultyItem.beginner,
+        text: DifficultyText.beginner,
+    },
+    {
+        value: DifficultyItem.intermediate,
+        text: DifficultyText.intermediate,
+    },
+    {
+        value: DifficultyItem.advanced,
+        text: DifficultyText.advanced,
+    },
+];
 
-const altitudeOptions = (() => {
-    return [
-        {
-            value: 'flat',
-            text: '평지',
-        },
-        {
-            value: 'uphill',
-            text: '업힐',
-        },
-        {
-            value: 'mountain',
-            text: '산',
-        },
-    ];
-})();
+const altitudeItems: Item[] = [
+    {
+        value: AltitudeItem.flat,
+        text: AltitudeText.flat,
+    },
+    {
+        value: AltitudeItem.uphill,
+        text: AltitudeText.uphill,
+    },
+    {
+        value: AltitudeItem.mountain,
+        text: AltitudeText.mountain,
+    },
+];
 
-export { timeOptions, difficultyOptions, altitudeOptions };
+export { timeItems, difficultyItems, altitudeItems };

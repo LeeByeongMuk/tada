@@ -1,4 +1,8 @@
-const scrollPaging = (isLoading: boolean, callback: any): void => {
+interface Callback {
+    (): void;
+}
+
+const scrollPaging = (isLoading: boolean, callback: Callback): void => {
     if (!isLoading) {
         const scrollTop = Math.max(
             document.documentElement.scrollTop,

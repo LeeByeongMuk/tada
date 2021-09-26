@@ -1,14 +1,22 @@
+interface GetKey {
+    (key: string): void;
+}
+
+interface GetKeyValue {
+    (key: string, value: string | object): void;
+}
+
 interface Storage {
-    set: any;
-    get: any;
-    remove: any;
+    set: GetKeyValue;
+    get: GetKey;
+    remove: GetKey;
 }
 
 const storage: Storage = {
-    set: (key: string, object: object | string) => {
+    set: (key: string, value: string | object) => {
         if (localStorage) {
             localStorage[key] =
-                typeof object === 'string' ? object : JSON.stringify(object);
+                typeof value === 'string' ? value : JSON.stringify(value);
         }
     },
     get: (key: string) => {
