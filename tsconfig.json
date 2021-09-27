@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "baseUrl": "./resources",
-        "allowJs": false,
-        "checkJs": true,
+        "allowJs": false, // TODO: 추후 true 변경
+        "checkJs": false, // TODO: 추후 true 변경
         "target": "es5",
         "lib": ["es2015", "dom", "dom.iterable"],
         "paths": {

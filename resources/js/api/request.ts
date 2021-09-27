@@ -13,8 +13,8 @@ const request = async (options: object) => {
         } else {
             throw response;
         }
-    } catch ({ err }) {
-        const message = err.response.data.message;
+    } catch (err: any) {
+        const message = err.err.response.data.message;
         return {
             isError: true,
             message: message,

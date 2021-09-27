@@ -3,7 +3,14 @@ import { Route, useHistory } from 'react-router-dom';
 import storage from '@/utils/storage';
 import { getUserStatus } from '@/api/userApi';
 
-const AuthRoute = ({ check = null, ...props }) => {
+interface AuthParam {
+    check?: boolean | null;
+    exact?: boolean;
+    path?: string;
+    component?: any;
+}
+
+const AuthRoute = ({ check = null, ...props }: AuthParam) => {
     const history = useHistory();
 
     const authCheck = async () => {
