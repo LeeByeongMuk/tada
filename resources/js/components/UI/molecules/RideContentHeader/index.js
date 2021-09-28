@@ -1,6 +1,6 @@
-import React, {memo} from "react";
-import styled from "styled-components";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import styled from 'styled-components';
+import color from '@/styles/color';
 
 const StyledHeader = styled.div`
     overflow: hidden;
@@ -22,7 +22,7 @@ const StyledSpan = styled.span`
     box-sizing: border-box;
 `;
 
-const RideContentHeader = memo(({children}) => {
+const RideContentHeader = memo(({ children }) => {
     return (
         <StyledHeader>
             <StyledSpan>{children}</StyledSpan>
@@ -31,7 +31,7 @@ const RideContentHeader = memo(({children}) => {
 });
 
 RideContentHeader.defalutProps = {
-    children: ''
+    children: '',
 };
 
 export default RideContentHeader;

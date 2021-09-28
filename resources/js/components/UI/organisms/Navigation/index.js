@@ -1,10 +1,10 @@
-import React, {memo} from "react";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import styled from "styled-components";
-import List from "@components/UI/atoms/List";
-import color from "@/constant/color";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import List from '@components/UI/atoms/List';
+import color from '@/styles/color';
+import font from '@/styles/font';
 
 const StyledNav = styled.nav`
     position: fixed;
@@ -41,14 +41,14 @@ const NavList = styled(List)`
     }
 `;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        ...state
+        ...state,
     };
 };
 
-const Navigation = memo(({...props}) => {
-    const {isLoggedIn} = props.user;
+const Navigation = memo(({ ...props }) => {
+    const { isLoggedIn } = props.user;
 
     return (
         <StyledNav>
@@ -57,7 +57,9 @@ const Navigation = memo(({...props}) => {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to={isLoggedIn ? '/ride/create' : '/login'}>Create</Link>
+                    <Link to={isLoggedIn ? '/ride/create' : '/login'}>
+                        Create
+                    </Link>
                 </li>
                 <li>
                     <Link to={isLoggedIn ? '/mypage' : '/login'}>MyPage</Link>

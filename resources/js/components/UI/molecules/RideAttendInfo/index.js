@@ -1,7 +1,7 @@
-import React, {memo} from "react";
-import styled from "styled-components";
-import Span from "@components/UI/atoms/Span";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import styled from 'styled-components';
+import Span from '@components/UI/atoms/Span';
+import color from '@/styles/color';
 
 const StyledSpan = styled(Span)`
     display: block;
@@ -20,16 +20,12 @@ const StyledSpan = styled(Span)`
     box-sizing: border-box;
 `;
 
-const RideAttendInfo = memo(({children, ...props}) => {
-    return (
-        <StyledSpan {...props}>
-            {children}
-        </StyledSpan>
-    );
+const RideAttendInfo = memo(({ children, ...props }) => {
+    return <StyledSpan {...props}>{children}</StyledSpan>;
 });
 
 RideAttendInfo.defaultProps = {
-    children: ''
+    children: '',
 };
 
 export default RideAttendInfo;

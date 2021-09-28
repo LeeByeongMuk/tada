@@ -1,9 +1,9 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Span from "@components/UI/atoms/Span";
-import color from "@/constant/color";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Span from '@components/UI/atoms/Span';
+import color from '@/styles/color';
+import font from '@/styles/font';
 
 const StyledListItem = styled.li`
     overflow: hidden;
@@ -28,7 +28,7 @@ const StyledSpan = styled(Span)`
     color: ${color.gray600};
 `;
 
-const RideContentGroupItem = memo(({isEmpty, check, title, children}) => {
+const RideContentGroupItem = memo(({ isEmpty, check, title, children }) => {
     if (isEmpty && !check) {
         return '';
     } else {
@@ -53,8 +53,8 @@ RideContentGroupItem.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.element,
-        PropTypes.number
-    ])
+        PropTypes.number,
+    ]),
 };
 
 export default RideContentGroupItem;

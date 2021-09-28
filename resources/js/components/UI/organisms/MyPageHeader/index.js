@@ -1,14 +1,14 @@
-import React, {memo, useCallback} from "react";
-import styled, {css} from "styled-components";
-import {compose} from "redux";
-import {connect, useDispatch} from "react-redux";
-import {withRouter, Link, useHistory} from "react-router-dom";
-import Heading from "@components/UI/atoms/Heading";
-import Button from "@components/UI/atoms/Button";
-import font from "@/constant/font";
-import color from "@/constant/color";
+import React, { memo, useCallback } from 'react';
+import styled, { css } from 'styled-components';
+import { compose } from 'redux';
+import { connect, useDispatch } from 'react-redux';
+import { withRouter, Link, useHistory } from 'react-router-dom';
+import Heading from '@components/UI/atoms/Heading';
+import Button from '@components/UI/atoms/Button';
+import font from '@/styles/font';
+import color from '@/styles/color';
 
-import {logout} from "@/actions/user";
+import { logout } from '@/actions/user';
 
 const StyledHeader = styled.header`
     display: flex;
@@ -78,22 +78,26 @@ const ButtonStyles = css`
     text-decoration: none;
 `;
 
-const StyledButton = styled(Button)`${ButtonStyles}`;
-const StyledLink = styled(Link)`${ButtonStyles}`;
+const StyledButton = styled(Button)`
+    ${ButtonStyles}
+`;
+const StyledLink = styled(Link)`
+    ${ButtonStyles}
+`;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        ...state
+        ...state,
     };
 };
 
-const MyPageHeader = memo(({...props}) => {
+const MyPageHeader = memo(({ ...props }) => {
     let history = useHistory();
     const dispatch = useDispatch();
     const user = props.user.info;
-    const {name} = user;
+    const { name } = user;
 
-    const handleLogout = useCallback((event) => {
+    const handleLogout = useCallback(event => {
         event.preventDefault();
         dispatch(logout());
         history.push('/');
@@ -102,7 +106,7 @@ const MyPageHeader = memo(({...props}) => {
     return (
         <StyledHeader>
             <ThumbnailWrapper>
-                <img src="/images/global/default_profile.png"/>
+                <img src="/images/global/default_profile.png" />
             </ThumbnailWrapper>
 
             <StyledSection>
@@ -119,7 +123,4 @@ const MyPageHeader = memo(({...props}) => {
     );
 });
 
-export default compose(
-    withRouter,
-    connect(mapStateToProps)
-)(MyPageHeader);
+export default compose(withRouter, connect(mapStateToProps))(MyPageHeader);

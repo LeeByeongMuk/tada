@@ -1,9 +1,9 @@
-import React, {memo} from "react";
-import styled from "styled-components";
-import {Link} from "react-router-dom";
-import Heading from "@components/UI/atoms/Heading";
-import color from "@/constant/color";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Heading from '@components/UI/atoms/Heading';
+import color from '@/styles/color';
+import font from '@/styles/font';
 
 const StyledHeader = styled.header`
     position: fixed;
@@ -26,7 +26,6 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderLogo = styled(Heading)`
-
     a {
         font-weight: normal;
         font-size: ${font.sizeBase};

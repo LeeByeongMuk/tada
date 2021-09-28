@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import font from '@/constant/font';
+import font from '@/styles/font';
 import { memo } from 'react';
 
 const StyledSpan = styled.span`

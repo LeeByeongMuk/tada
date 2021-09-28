@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import color from "@/constant/color";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import color from '@/styles/color';
 
 const styles = css`
     text-align: center;
@@ -9,8 +9,12 @@ const styles = css`
     border: 1px solid ${color.borderColor};
 `;
 
-const Th = styled.th`${styles}`;
-const Td = styled.td`${styles}`;
+const Th = styled.th`
+    ${styles}
+`;
+const Td = styled.td`
+    ${styles}
+`;
 
 const TableCell = ({ heading, children, ...props }) => {
     return React.createElement(heading ? Th : Td, props, children);

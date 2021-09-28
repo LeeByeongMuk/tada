@@ -1,7 +1,7 @@
-import React, {memo} from "react";
-import styled, {css} from "styled-components";
-import font from "@/constant/font";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import styled, { css } from 'styled-components';
+import font from '@/styles/font';
+import color from '@/styles/color';
 
 const Styles = css`
     padding: 0 20px;
@@ -14,7 +14,7 @@ const Styles = css`
     resize: none;
 
     &::placeholder {
-        color: ${color.gray900}
+        color: ${color.gray900};
     }
 
     &:disabled {
@@ -22,11 +22,15 @@ const Styles = css`
     }
 `;
 
-const StyledTextarea = styled.textarea`${Styles}`;
-const StyledInput = styled.input`${Styles}`;
+const StyledTextarea = styled.textarea`
+    ${Styles}
+`;
+const StyledInput = styled.input`
+    ${Styles}
+`;
 
-const Input = memo(({...props}) => {
-    const {type} = props;
+const Input = memo(({ ...props }) => {
+    const { type } = props;
     if (type === 'textarea') {
         return <StyledTextarea {...props} />;
     } else if (type === 'file') {

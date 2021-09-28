@@ -1,16 +1,16 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import RideContentHeader from "@components/UI/molecules/RideContentHeader";
-import RideContentGroup from "@components/UI/molecules/RideContentGroup";
-import RideContentGroupItem from "@components/UI/molecules/RideContentGroupItem";
-import Map from "@components/UI/atoms/Map";
-import Heading from "@components/UI/atoms/Heading";
-import Button from "@components/UI/atoms/Button";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import RideContentHeader from '@components/UI/molecules/RideContentHeader';
+import RideContentGroup from '@components/UI/molecules/RideContentGroup';
+import RideContentGroupItem from '@components/UI/molecules/RideContentGroupItem';
+import Map from '@components/UI/atoms/Map';
+import Heading from '@components/UI/atoms/Heading';
+import Button from '@components/UI/atoms/Button';
 
-import color from "@/constant/color";
-import font from "@/constant/font";
-import {formatDifficulty} from '@/utils/ride';
+import color from '@/styles/color';
+import font from '@/styles/font';
+import { formatDifficulty } from '@/utils/ride';
 
 const StyledContentWrapper = styled.div`
     padding: 0 20px;
@@ -101,130 +101,135 @@ const StyledAttendButton = styled(Button)`
     color: ${color.white};
 `;
 
-const RideContent = memo(({rideData, participantsCount, isAttend, rideAttend}) => {
-    const {
-        host,
-        difficulty,
-        name,
-        distance,
-        altitude_detail,
-        latitude,
-        longitude,
-        started_at,
-        ended_at,
-        address,
-        address_detail,
-        file,
-        description,
-        capacity
-    } = rideData;
+const RideContent = memo(
+    ({ rideData, participantsCount, isAttend, rideAttend }) => {
+        const {
+            host,
+            difficulty,
+            name,
+            distance,
+            altitude_detail,
+            latitude,
+            longitude,
+            started_at,
+            ended_at,
+            address,
+            address_detail,
+            file,
+            description,
+            capacity,
+        } = rideData;
 
-    return (
-        <>
-            <RideContentHeader>
-                {formatDifficulty(difficulty)}
-            </RideContentHeader>
+        return (
+            <>
+                <RideContentHeader>
+                    {formatDifficulty(difficulty)}
+                </RideContentHeader>
 
-            <StyledContentWrapper>
-                <RideContentGroup>
-                    <StyledHeading level={2}>{name}</StyledHeading>
-                </RideContentGroup>
+                <StyledContentWrapper>
+                    <RideContentGroup>
+                        <StyledHeading level={2}>{name}</StyledHeading>
+                    </RideContentGroup>
 
-                <RideContentGroup type={'list'}>
-                    <RideContentGroupItem title="개설자">
-                        <p>{host}</p>
-                    </RideContentGroupItem>
-                </RideContentGroup>
+                    <RideContentGroup type={'list'}>
+                        <RideContentGroupItem title="개설자">
+                            <p>{host}</p>
+                        </RideContentGroupItem>
+                    </RideContentGroup>
 
-                <RideContentGroup type={'list'}>
-                    <RideContentGroupItem isEmpty={true}
-                                          check={distance}
-                                          title="거리">
-                        <p>
-                            {distance ?
-                                `${distance}km` :
-                                '미정'
-                            }
-                        </p>
-                    </RideContentGroupItem>
-                    <RideContentGroupItem isEmpty={true}
-                                          check={altitude_detail}
-                                          title="고도">
-                        <p>
-                            {altitude_detail && <span>{altitude_detail}m</span>}
-                        </p>
-                    </RideContentGroupItem>
-                    <RideContentGroupItem title="시작시간">
-                        <p>{started_at}</p>
-                    </RideContentGroupItem>
-                    <RideContentGroupItem isEmpty={true}
-                                          check={ended_at}
-                                          title="종료시간">
-                        <p>{ended_at}</p>
-                    </RideContentGroupItem>
-                    <RideContentGroupItem title="장소">
-                        <p>{address}</p>
-                    </RideContentGroupItem>
-                    <RideContentGroupItem isEmpty={true}
-                                          check={address_detail}
-                                          title="장소상세">
-                        <p>{address_detail}</p>
-                    </RideContentGroupItem>
-                </RideContentGroup>
+                    <RideContentGroup type={'list'}>
+                        <RideContentGroupItem
+                            isEmpty={true}
+                            check={distance}
+                            title="거리"
+                        >
+                            <p>{distance ? `${distance}km` : '미정'}</p>
+                        </RideContentGroupItem>
+                        <RideContentGroupItem
+                            isEmpty={true}
+                            check={altitude_detail}
+                            title="고도"
+                        >
+                            <p>
+                                {altitude_detail && (
+                                    <span>{altitude_detail}m</span>
+                                )}
+                            </p>
+                        </RideContentGroupItem>
+                        <RideContentGroupItem title="시작시간">
+                            <p>{started_at}</p>
+                        </RideContentGroupItem>
+                        <RideContentGroupItem
+                            isEmpty={true}
+                            check={ended_at}
+                            title="종료시간"
+                        >
+                            <p>{ended_at}</p>
+                        </RideContentGroupItem>
+                        <RideContentGroupItem title="장소">
+                            <p>{address}</p>
+                        </RideContentGroupItem>
+                        <RideContentGroupItem
+                            isEmpty={true}
+                            check={address_detail}
+                            title="장소상세"
+                        >
+                            <p>{address_detail}</p>
+                        </RideContentGroupItem>
+                    </RideContentGroup>
 
-                {file &&
-                <RideContentGroup>
-                    <Map mapOptions={{
-                        id: 'gpx-map',
-                        width: '100%',
-                        height: '360px',
-                        center: {
-                            lat: latitude,
-                            lng: longitude
-                        },
-                        disabled: true,
-                        zoom: 10,
-                        gpx: file
-                    }}/>
+                    {file && (
+                        <RideContentGroup>
+                            <Map
+                                mapOptions={{
+                                    id: 'gpx-map',
+                                    width: '100%',
+                                    height: '360px',
+                                    center: {
+                                        lat: latitude,
+                                        lng: longitude,
+                                    },
+                                    disabled: true,
+                                    zoom: 10,
+                                    gpx: file,
+                                }}
+                            />
 
-                    <DownloadButton href={file.path}
-                                    download>
-                        GPX파일 다운로드
-                    </DownloadButton>
-                </RideContentGroup>
-                }
+                            <DownloadButton href={file.path} download>
+                                GPX파일 다운로드
+                            </DownloadButton>
+                        </RideContentGroup>
+                    )}
 
-                <RideContentGroup>
-                    <StyledRideDescription>
-                        {description}
-                    </StyledRideDescription>
-                </RideContentGroup>
+                    <RideContentGroup>
+                        <StyledRideDescription>
+                            {description}
+                        </StyledRideDescription>
+                    </RideContentGroup>
 
-                <StyledRideCapacity>
-                    <RideCapacityDiv>정원 {capacity}명</RideCapacityDiv>
-                    <RideCapacityDiv>현재 {participantsCount}명 참석</RideCapacityDiv>
-                </StyledRideCapacity>
-            </StyledContentWrapper>
+                    <StyledRideCapacity>
+                        <RideCapacityDiv>정원 {capacity}명</RideCapacityDiv>
+                        <RideCapacityDiv>
+                            현재 {participantsCount}명 참석
+                        </RideCapacityDiv>
+                    </StyledRideCapacity>
+                </StyledContentWrapper>
 
-            <ButtonWrapper>
-                <StyledAttendButton type="button"
-                                    onClick={rideAttend}>
-
-                    {isAttend ?
-                        '신청한 라이드 입니다' :
-                        '참가하기'
-                    }
-                </StyledAttendButton>
-            </ButtonWrapper>
-        </>
-    );
-});
+                <ButtonWrapper>
+                    <StyledAttendButton type="button" onClick={rideAttend}>
+                        {isAttend ? '신청한 라이드 입니다' : '참가하기'}
+                    </StyledAttendButton>
+                </ButtonWrapper>
+            </>
+        );
+    },
+);
 
 RideContent.propTypes = {
     rideData: PropTypes.object.isRequired,
     participantsCount: PropTypes.number.isRequired,
     isAttend: PropTypes.bool,
-    rideAttend: PropTypes.func.isRequired
+    rideAttend: PropTypes.func.isRequired,
 };
 
 export default RideContent;

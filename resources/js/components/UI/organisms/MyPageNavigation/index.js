@@ -1,9 +1,9 @@
-import React, {memo} from "react";
-import styled from "styled-components";
-import {NavLink} from "react-router-dom";
-import List from "@components/UI/atoms/List";
-import color from "@/constant/color";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import List from '@components/UI/atoms/List';
+import color from '@/styles/color';
+import font from '@/styles/font';
 
 const StyledNav = styled.nav`
     display: flex;
@@ -39,12 +39,15 @@ const StyledList = styled(List)`
     }
 `;
 
-const CustomLink = ({children, ...props}) => {
+const CustomLink = ({ children, ...props }) => {
     return (
-        <NavLink {...props} activeStyle={{
-            background: color.pageColor,
-            color: color.white
-        }}>
+        <NavLink
+            {...props}
+            activeStyle={{
+                background: color.pageColor,
+                color: color.white,
+            }}
+        >
             {children}
         </NavLink>
     );
@@ -55,7 +58,9 @@ const MyPageNavigation = memo(() => {
         <StyledNav>
             <StyledList>
                 <li>
-                    <CustomLink exact to="/mypage">신청내역</CustomLink>
+                    <CustomLink exact to="/mypage">
+                        신청내역
+                    </CustomLink>
                 </li>
                 <li>
                     <CustomLink to="/mypage/manage">개설내역</CustomLink>

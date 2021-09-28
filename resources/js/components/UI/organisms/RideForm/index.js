@@ -9,7 +9,7 @@ import Map from '@components/UI/atoms/Map';
 import ToolTipIInput from '@components/UI/molecules/ToolTipIInput';
 import Input from '@components/UI/atoms/Input';
 import SelectBox from '@components/UI/atoms/SelectBox';
-import color from '@/constant/color';
+import color from '@/styles/color';
 import { timeItems, difficultyItems, altitudeItems } from '@/utils/option';
 import { getReverseGeocode } from '@/api/mapApi';
 

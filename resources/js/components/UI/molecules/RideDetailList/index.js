@@ -1,9 +1,9 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import List from "@components/UI/atoms/List";
-import font from "@/constant/font";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import List from '@components/UI/atoms/List';
+import font from '@/styles/font';
+import color from '@/styles/color';
 
 const StyledList = styled(List)`
     margin-top: 12px;
@@ -33,9 +33,9 @@ const StyledDistance = styled.p`
     word-break: keep-all;
 `;
 
-const RideDetailList = memo(({detailItems}) => {
+const RideDetailList = memo(({ detailItems }) => {
     const lists = detailItems.map(item => {
-        const {name, value} = item;
+        const { name, value } = item;
 
         if (!value) return null;
 
@@ -47,15 +47,11 @@ const RideDetailList = memo(({detailItems}) => {
         );
     });
 
-    return (
-        <StyledList>
-            {lists}
-        </StyledList>
-    );
+    return <StyledList>{lists}</StyledList>;
 });
 
 RideDetailList.propTypes = {
-    detailItems: PropTypes.array.isRequired
+    detailItems: PropTypes.array.isRequired,
 };
 
 export default RideDetailList;

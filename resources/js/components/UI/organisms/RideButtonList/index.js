@@ -1,12 +1,12 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled, {css} from "styled-components";
-import List from "@components/UI/atoms/List";
-import RideHeader from "@components/UI/molecules/RideHeader";
-import RideDetailList from "@components/UI/molecules/RideDetailList";
-import color from "@/constant/color";
-import {Link} from "react-router-dom";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import List from '@components/UI/atoms/List';
+import RideHeader from '@components/UI/molecules/RideHeader';
+import RideDetailList from '@components/UI/molecules/RideDetailList';
+import color from '@/styles/color';
+import { Link } from 'react-router-dom';
+import font from '@/styles/font';
 
 const StyledList = styled(List)`
     margin-top: 20px;
@@ -54,80 +54,84 @@ const ButtonStyles = css`
     text-decoration: none;
 `;
 
-const StyledLink = styled(Link)`${ButtonStyles}`;
-const StyledButton = styled.button`${ButtonStyles}`;
+const StyledLink = styled(Link)`
+    ${ButtonStyles}
+`;
+const StyledButton = styled.button`
+    ${ButtonStyles}
+`;
 
-const RideButtonList = memo(({type, rides, emptyMessage, rideDelete, rideCancel}) => {
-    let lists = rides.map(ride => {
-        const {
-            id,
-            name,
-            difficulty,
-            started_at,
-            ended_at,
-        } = ride;
-        const detailItems = [
-            {
-                name: '출발시간',
-                value: started_at
-            },
-            {
-                name: '종료시간',
-                value: ended_at
+const RideButtonList = memo(
+    ({ type, rides, emptyMessage, rideDelete, rideCancel }) => {
+        let lists = rides.map(ride => {
+            const { id, name, difficulty, started_at, ended_at } = ride;
+            const detailItems = [
+                {
+                    name: '출발시간',
+                    value: started_at,
+                },
+                {
+                    name: '종료시간',
+                    value: ended_at,
+                },
+            ];
+
+            let buttons;
+            if (type === 'manage') {
+                buttons = (
+                    <>
+                        <StyledLink to={`/ride/${id}`}>바로가기</StyledLink>
+                        <StyledLink to={`/ride/edit/${id}`}>
+                            수정하기
+                        </StyledLink>
+                        <StyledButton
+                            type="button"
+                            onClick={event => rideDelete({ event, id })}
+                        >
+                            삭제하기
+                        </StyledButton>
+                        <StyledLink to={`/mypage/${id}/entry`}>
+                            참여자정보
+                        </StyledLink>
+                    </>
+                );
+            } else if (type === 'attend') {
+                buttons = (
+                    <>
+                        <StyledLink to={`/ride/${id}`}>바로가기</StyledLink>
+                        <StyledButton
+                            type="button"
+                            onClick={event => rideCancel({ event, id })}
+                        >
+                            취소하기
+                        </StyledButton>
+                    </>
+                );
             }
-        ];
 
-        let buttons;
-        if (type === 'manage') {
-            buttons = <>
-                <StyledLink to={`/ride/${id}`}>바로가기</StyledLink>
-                <StyledLink to={`/ride/edit/${id}`}>수정하기</StyledLink>
-                <StyledButton type="button"
-                              onClick={event => rideDelete({event, id})}>
-                    삭제하기
-                </StyledButton>
-                <StyledLink to={`/mypage/${id}/entry`}>참여자정보</StyledLink>
-            </>;
-        } else if (type === 'attend') {
-            buttons = <>
-                <StyledLink to={`/ride/${id}`}>바로가기</StyledLink>
-                <StyledButton type="button"
-                              onClick={event => rideCancel({event, id})}>
-                    취소하기
-                </StyledButton>
-            </>;
+            return (
+                <StyledRideItem key={id}>
+                    {/* 리스트 해더 영역 */}
+                    <RideHeader level={2} name={name} difficulty={difficulty} />
+
+                    {/* 리스트 디테일 영역 */}
+                    <RideDetailList detailItems={detailItems} />
+
+                    <ButtonWrapper>{buttons}</ButtonWrapper>
+                </StyledRideItem>
+            );
+        });
+
+        if (lists.length === 0) {
+            lists = <StyledEmptyList>{emptyMessage}</StyledEmptyList>;
         }
 
-        return (
-            <StyledRideItem key={id}>
-                {/* 리스트 해더 영역 */}
-                <RideHeader level={2}
-                            name={name}
-                            difficulty={difficulty}/>
-
-                {/* 리스트 디테일 영역 */}
-                <RideDetailList detailItems={detailItems}/>
-
-                <ButtonWrapper>
-                    {buttons}
-                </ButtonWrapper>
-            </StyledRideItem>
-        );
-    });
-
-    if (lists.length === 0) {
-        lists = <StyledEmptyList>{emptyMessage}</StyledEmptyList>;
-    }
-
-    return (
-        <StyledList ordered={false}>
-            {lists}
-        </StyledList>
-    );
-});
+        return <StyledList ordered={false}>{lists}</StyledList>;
+    },
+);
 
 RideButtonList.defaultProps = {
-    emptyMessage: '리스트가 없습니다.'
+    emptyMessage: '리스트가 없습니다.',
 };
 
 RideButtonList.propTypes = {
@@ -135,7 +139,7 @@ RideButtonList.propTypes = {
     rides: PropTypes.array.isRequired,
     emptyMessage: PropTypes.string,
     rideDelete: PropTypes.func,
-    rideCancel: PropTypes.func
+    rideCancel: PropTypes.func,
 };
 
 export default RideButtonList;

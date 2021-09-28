@@ -1,10 +1,10 @@
-import React, {Component} from "react";
-import styled from "styled-components";
-import {connect} from "react-redux";
-import {Link, withRouter} from "react-router-dom";
-import {logout} from "@/actions/user";
-import color from "@/constant/color";
-import font from "@/constant/font";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import { logout } from '@/actions/user';
+import color from '@/styles/color';
+import font from '@/styles/font';
 
 const StyledAside = styled.div`
     .top-area {
@@ -28,7 +28,8 @@ const StyledAside = styled.div`
             height: 32px;
             padding: 0;
             border: 0;
-            background: url('/images/global/menu_white_icon.png') no-repeat center center;
+            background: url('/images/global/menu_white_icon.png') no-repeat
+                center center;
             background-size: 26px 26px;
             text-indent: -9999px;
         }
@@ -73,7 +74,7 @@ const StyledAside = styled.div`
         margin-top: 30px;
         padding: 0 15px;
 
-        *[class^="btn-"] {
+        *[class^='btn-'] {
             display: block;
             width: 100%;
             height: 45px;
@@ -91,9 +92,9 @@ const StyledAside = styled.div`
     }
 `;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        ...state
+        ...state,
     };
 };
 
@@ -102,7 +103,7 @@ class Aside extends Component {
         super(props);
 
         this.state = {
-            isMenu: false
+            isMenu: false,
         };
 
         this.handleLogout = this.handleLogout.bind(this);
@@ -115,7 +116,7 @@ class Aside extends Component {
 
     handleLogout(e) {
         e.preventDefault();
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
 
         dispatch(logout());
         this.handleMenuClick();
@@ -129,43 +130,104 @@ class Aside extends Component {
         return (
             <StyledAside>
                 <div className="top-area">
-                    <button type="button" className="btn-aside-close"
-                            onClick={this.handleMenuClick}>닫기
+                    <button
+                        type="button"
+                        className="btn-aside-close"
+                        onClick={this.handleMenuClick}
+                    >
+                        닫기
                     </button>
                 </div>
 
                 <div className="user-info-area">
-                    <img src="/images/global/default_profile.png" className="user-profile" alt="프로필 이미지"/>
+                    <img
+                        src="/images/global/default_profile.png"
+                        className="user-profile"
+                        alt="프로필 이미지"
+                    />
                     <p className="user-name">
                         {isLoggedIn ? `${user.name} 님` : '비로그인'}
                     </p>
                 </div>
 
                 <nav className="nav-area">
-                    {isLoggedIn ?
+                    {isLoggedIn ? (
                         <ul className="nav-list">
-                            <li><Link to="/" onClick={this.handleMenuClick}>메인</Link></li>
-                            <li><Link to="/ride/create" onClick={this.handleMenuClick}>라이드 개설</Link></li>
-                            <li><Link to="/account/attend" onClick={this.handleMenuClick}>신청내역</Link></li>
-                            <li><Link to="/account/manage" onClick={this.handleMenuClick}>개설내역</Link></li>
+                            <li>
+                                <Link to="/" onClick={this.handleMenuClick}>
+                                    메인
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/ride/create"
+                                    onClick={this.handleMenuClick}
+                                >
+                                    라이드 개설
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/account/attend"
+                                    onClick={this.handleMenuClick}
+                                >
+                                    신청내역
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/account/manage"
+                                    onClick={this.handleMenuClick}
+                                >
+                                    개설내역
+                                </Link>
+                            </li>
                         </ul>
-                        :
+                    ) : (
                         <ul className="nav-list">
-                            <li><Link to="/" onClick={this.handleMenuClick}>메인</Link></li>
-                            <li><Link to="/login" onClick={this.handleMenuClick}>로그인</Link></li>
-                            <li><Link to="/register" onClick={this.handleMenuClick}>회원가입</Link></li>
+                            <li>
+                                <Link to="/" onClick={this.handleMenuClick}>
+                                    메인
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/login"
+                                    onClick={this.handleMenuClick}
+                                >
+                                    로그인
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/register"
+                                    onClick={this.handleMenuClick}
+                                >
+                                    회원가입
+                                </Link>
+                            </li>
                         </ul>
-                    }
+                    )}
                 </nav>
 
                 <div className="btn-area">
-                    {isLoggedIn ?
-                        <button type="button" className="btn-logout"
-                                onClick={this.handleLogout}>로그아웃</button>
-                        :
-                        <Link to="/login" className="btn-login"
-                              onClick={this.handleMenuClick}>로그인</Link>
-                    }
+                    {isLoggedIn ? (
+                        <button
+                            type="button"
+                            className="btn-logout"
+                            onClick={this.handleLogout}
+                        >
+                            로그아웃
+                        </button>
+                    ) : (
+                        <Link
+                            to="/login"
+                            className="btn-login"
+                            onClick={this.handleMenuClick}
+                        >
+                            로그인
+                        </Link>
+                    )}
                 </div>
             </StyledAside>
         );

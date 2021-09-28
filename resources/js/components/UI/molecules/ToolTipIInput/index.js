@@ -1,13 +1,13 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Input from "@components/UI/atoms/Input";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Input from '@components/UI/atoms/Input';
+import font from '@/styles/font';
 
 const StyledWrapper = styled.div`
     overflow: hidden;
     position: relative;
-    margin: ${({margin}) => margin};
+    margin: ${({ margin }) => margin};
 `;
 
 const StyledInput = styled(Input)`
@@ -25,26 +25,24 @@ const StyledText = styled.span`
     font-size: ${font.sizeSmall};
 `;
 
-const ToolTipIInput = memo(({margin, inputProps, text}) => {
+const ToolTipIInput = memo(({ margin, inputProps, text }) => {
     return (
         <StyledWrapper margin={margin}>
             <StyledInput {...inputProps} />
-            <StyledText>
-                {text}
-            </StyledText>
+            <StyledText>{text}</StyledText>
         </StyledWrapper>
     );
 });
 
 ToolTipIInput.defaultProps = {
     margin: '0',
-    text: ''
+    text: '',
 };
 
 ToolTipIInput.propTypes = {
     margin: PropTypes.string,
     inputProps: PropTypes.object,
-    text: PropTypes.string
+    text: PropTypes.string,
 };
 
 export default ToolTipIInput;

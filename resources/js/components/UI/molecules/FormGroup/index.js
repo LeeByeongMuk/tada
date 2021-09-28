@@ -1,8 +1,8 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Label from "@components/UI/atoms/Label";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Label from '@components/UI/atoms/Label';
+import color from '@/styles/color';
 
 const StyledFormGroup = styled.div`
     margin-top: 20px;
@@ -11,7 +11,7 @@ const StyledFormGroup = styled.div`
         margin-top: 0;
     }
 
-    &:after{
+    &:after {
         display: block;
         clear: both;
         content: '';
@@ -22,10 +22,10 @@ const StyledFormGroup = styled.div`
         line-height: 18px;
     }
 
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="tel"],
+    input[type='text'],
+    input[type='password'],
+    input[type='email'],
+    input[type='tel'],
     textarea {
         width: 100%;
         height: 45px;
@@ -41,7 +41,9 @@ const StyledFormGroup = styled.div`
 
 const StyledLabel = styled(Label)`
     &::after {
-        ${({isRequired}) => isRequired && `
+        ${({ isRequired }) =>
+            isRequired &&
+            `
             padding-left: 4px;
             font-size: 15px;
             color: ${color.red};
@@ -50,11 +52,10 @@ const StyledLabel = styled(Label)`
     }
 `;
 
-const FormGroup = memo(({isRequired, labelProps, children}) => {
+const FormGroup = memo(({ isRequired, labelProps, children }) => {
     return (
         <StyledFormGroup>
-            <StyledLabel {...labelProps}
-                         isRequired={isRequired}/>
+            <StyledLabel {...labelProps} isRequired={isRequired} />
 
             {children}
         </StyledFormGroup>
@@ -62,7 +63,7 @@ const FormGroup = memo(({isRequired, labelProps, children}) => {
 });
 
 FormGroup.propTypes = {
-    labelProps: PropTypes.object
+    labelProps: PropTypes.object,
 };
 
 export default FormGroup;

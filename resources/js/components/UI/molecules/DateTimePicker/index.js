@@ -1,10 +1,10 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import DatePicker from "react-date-picker";
-import SelectBox from "@components/UI/atoms/SelectBox";
-import font from "@/constant/font";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import DatePicker from 'react-date-picker';
+import SelectBox from '@components/UI/atoms/SelectBox';
+import font from '@/styles/font';
+import color from '@/styles/color';
 
 const Wrapper = styled.div`
     .react-date-picker {
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
         line-height: 40px;
         color: ${font.color};
 
-        input[type="number"] {
+        input[type='number'] {
             width: auto;
             height: auto;
             margin: 0;
@@ -37,10 +37,7 @@ const StyledSelectBox = styled(SelectBox)`
     border-radius: 4px;
 `;
 
-const DateTimePicker = memo(({
-    datePickerProps,
-    timePickerProps
-}) => {
+const DateTimePicker = memo(({ datePickerProps, timePickerProps }) => {
     return (
         <Wrapper>
             <DatePicker {...datePickerProps} />
@@ -51,7 +48,7 @@ const DateTimePicker = memo(({
 
 DateTimePicker.propTypes = {
     datePickerProps: PropTypes.object.isRequired,
-    timePickerProps: PropTypes.object.isRequired
+    timePickerProps: PropTypes.object.isRequired,
 };
 
 export default DateTimePicker;

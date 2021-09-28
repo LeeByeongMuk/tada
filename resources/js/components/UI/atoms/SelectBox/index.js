@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import color from '@/constant/color';
-import font from '@/constant/font';
+import color from '@/styles/color';
+import font from '@/styles/font';
 
 const StyledSelectBox = styled.select`
     padding-left: 20px;

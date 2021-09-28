@@ -1,9 +1,9 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Label from "@components/UI/atoms/Label";
-import Input from "@components/UI/atoms/Input";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Label from '@components/UI/atoms/Label';
+import Input from '@components/UI/atoms/Input';
+import color from '@/styles/color';
 
 const StyledLabelInput = styled.div`
     margin-top: 20px;
@@ -23,11 +23,11 @@ const StyledLabelInput = styled.div`
         line-height: 18px;
     }
 
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="number"],
-    input[type="tel"],
+    input[type='text'],
+    input[type='password'],
+    input[type='email'],
+    input[type='number'],
+    input[type='tel'],
     textarea {
         width: 100%;
         height: 45px;
@@ -43,7 +43,9 @@ const StyledLabelInput = styled.div`
 
 const StyledLabel = styled(Label)`
     &::after {
-        ${({isRequired}) => isRequired && `
+        ${({ isRequired }) =>
+            isRequired &&
+            `
             padding-left: 4px;
             font-size: 15px;
             color: ${color.red};
@@ -52,11 +54,10 @@ const StyledLabel = styled(Label)`
     }
 `;
 
-const LabelInput = memo(({isRequired, labelProps, inputProps}) => {
+const LabelInput = memo(({ isRequired, labelProps, inputProps }) => {
     return (
         <StyledLabelInput>
-            <StyledLabel {...labelProps}
-                         isRequired={isRequired}/>
+            <StyledLabel {...labelProps} isRequired={isRequired} />
             <Input {...inputProps} />
         </StyledLabelInput>
     );
@@ -64,7 +65,7 @@ const LabelInput = memo(({isRequired, labelProps, inputProps}) => {
 
 LabelInput.propTypes = {
     labelProps: PropTypes.object,
-    inputProps: PropTypes.object
+    inputProps: PropTypes.object,
 };
 
 export default LabelInput;

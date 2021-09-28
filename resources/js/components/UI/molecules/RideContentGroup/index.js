@@ -1,7 +1,7 @@
-import React, {memo} from "react";
-import styled, {css} from "styled-components";
-import color from "@/constant/color";
-import font from "@/constant/font";
+import React, { memo } from 'react';
+import styled, { css } from 'styled-components';
+import color from '@/styles/color';
+import font from '@/styles/font';
 
 const Styles = css`
     overflow: hidden;
@@ -40,24 +40,16 @@ const StyledWrapGroup = styled.div`
     ${Styles};
 `;
 
-const RideContentGroup = memo(({type, children}) => {
+const RideContentGroup = memo(({ type, children }) => {
     if (type === 'list') {
-        return (
-            <StyledListGroup>
-                {children}
-            </StyledListGroup>
-        );
+        return <StyledListGroup>{children}</StyledListGroup>;
     } else {
-        return (
-            <StyledWrapGroup>
-                {children}
-            </StyledWrapGroup>
-        );
+        return <StyledWrapGroup>{children}</StyledWrapGroup>;
     }
 });
 
 RideContentGroup.defaultProps = {
-    children: ''
+    children: '',
 };
 
 export default RideContentGroup;

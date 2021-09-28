@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Caption from "@components/UI/atoms/Caption";
-import font from "@/constant/font";
-import color from "@/constant/color";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Caption from '@components/UI/atoms/Caption';
+import font from '@/styles/font';
+import color from '@/styles/color';
 
 const StyledTable = styled.table`
     border-collapse: collapse;
@@ -12,9 +12,7 @@ const StyledTable = styled.table`
     color: ${font.color};
 `;
 
-const Table = ({
-    caption, head, foot, children, ...props
-}) => {
+const Table = ({ caption, head, foot, children, ...props }) => {
     return (
         <StyledTable {...props}>
             {caption && <Caption>{caption}</Caption>}

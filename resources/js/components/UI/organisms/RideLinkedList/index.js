@@ -1,12 +1,12 @@
-import React, {memo} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import {Link} from "react-router-dom";
-import List from "@components/UI/atoms/List";
-import RideAttendInfo from "@components/UI/molecules/RideAttendInfo";
-import RideHeader from "@components/UI/molecules/RideHeader";
-import RideDetailList from "@components/UI/molecules/RideDetailList";
-import color from "@/constant/color";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import List from '@components/UI/atoms/List';
+import RideAttendInfo from '@components/UI/molecules/RideAttendInfo';
+import RideHeader from '@components/UI/molecules/RideHeader';
+import RideDetailList from '@components/UI/molecules/RideDetailList';
+import color from '@/styles/color';
 
 const StyledRideItem = styled.li`
     position: relative;
@@ -29,7 +29,7 @@ const StyledEmptyList = styled(StyledRideItem)`
     text-align: center;
 `;
 
-const RideLinkedList = memo(({rides}) => {
+const RideLinkedList = memo(({ rides }) => {
     let lists = rides.map(ride => {
         const {
             id,
@@ -40,42 +40,38 @@ const RideLinkedList = memo(({rides}) => {
             started_at,
             ended_at,
             address,
-            address_detail
+            address_detail,
         } = ride;
         const detailItems = [
             {
                 name: '거리',
-                value: distance ? `${distance}km` : ''
+                value: distance ? `${distance}km` : '',
             },
             {
                 name: '출발시간',
-                value: started_at
+                value: started_at,
             },
             {
                 name: '종료시간',
-                value: ended_at
+                value: ended_at,
             },
             {
                 name: '장소',
-                value: `${address} ${address_detail || ''}`
-            }
+                value: `${address} ${address_detail || ''}`,
+            },
         ];
 
         return (
             <StyledRideItem key={id}>
                 <Link to={`/ride/${id}`}>
                     {/* 참여 인수 */}
-                    <RideAttendInfo>
-                        {participants_count}명 참석
-                    </RideAttendInfo>
+                    <RideAttendInfo>{participants_count}명 참석</RideAttendInfo>
 
                     {/* 리스트 해더 영역 */}
-                    <RideHeader level={2}
-                                name={name}
-                                difficulty={difficulty}/>
+                    <RideHeader level={2} name={name} difficulty={difficulty} />
 
                     {/* 리스트 디테일 영역 */}
-                    <RideDetailList detailItems={detailItems}/>
+                    <RideDetailList detailItems={detailItems} />
                 </Link>
             </StyledRideItem>
         );
@@ -85,15 +81,11 @@ const RideLinkedList = memo(({rides}) => {
         lists = <StyledEmptyList>개설된 라이드가 없습니다.</StyledEmptyList>;
     }
 
-    return (
-        <List ordered={false}>
-            {lists}
-        </List>
-    );
+    return <List ordered={false}>{lists}</List>;
 });
 
-RideLinkedList.propTypes ={
-    rides: PropTypes.array
+RideLinkedList.propTypes = {
+    rides: PropTypes.array,
 };
 
 export default RideLinkedList;

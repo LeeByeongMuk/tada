@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import font from "@/constant/font";
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import font from '@/styles/font';
 
 const Caption = styled.caption`
     font-weight: bold;

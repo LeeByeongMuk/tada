@@ -1,11 +1,11 @@
-import React, {memo, useState} from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Input from "@components/UI/atoms/Input";
-import Button from "@components/UI/atoms/Button";
-import color from "@/constant/color";
-import font from "@/constant/font";
-import {commentCreate} from "@/api/commentApi";
+import React, { memo, useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Input from '@components/UI/atoms/Input';
+import Button from '@components/UI/atoms/Button';
+import color from '@/styles/color';
+import font from '@/styles/font';
+import { commentCreate } from '@/api/commentApi';
 
 const StyledForm = styled.form`
     display: flex;
@@ -35,21 +35,21 @@ const StyledButton = styled(Button)`
     text-decoration: none;
 `;
 
-const CommentForm = memo(({rideId, parentId, setComments}) => {
+const CommentForm = memo(({ rideId, parentId, setComments }) => {
     const [text, setText] = useState('');
 
-    const handleChangeText = (event) => {
+    const handleChangeText = event => {
         setText(event.target.value);
     };
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async event => {
         event.preventDefault();
 
         if (!text) {
             alert('댓글을 입력해주세요.');
             return;
         }
-        
+
         const target = event.target.querySelector('button[type="submit"]');
         if (target.disabled) return;
         target.disabled = true;
@@ -59,19 +59,16 @@ const CommentForm = memo(({rideId, parentId, setComments}) => {
                 data: {
                     ride_id: rideId,
                     parent_id: parentId,
-                    content: text
-                }
+                    content: text,
+                },
             };
             const response = await commentCreate(options);
 
             if (response.success) {
-                const {comment, message} = response.data;
+                const { comment, message } = response.data;
 
                 setComments(prevComments => {
-                    return [
-                        ...prevComments,
-                        comment
-                    ];
+                    return [...prevComments, comment];
                 });
                 setText('');
 
@@ -80,7 +77,7 @@ const CommentForm = memo(({rideId, parentId, setComments}) => {
                 throw response;
             }
         } catch (err) {
-            const {message} = err.data;
+            const { message } = err.data;
             alert(message);
         }
 
@@ -89,28 +86,25 @@ const CommentForm = memo(({rideId, parentId, setComments}) => {
 
     return (
         <StyledForm onSubmit={handleSubmit}>
-            <StyledTextarea type="textarea"
-                            value={text}
-                            onChange={handleChangeText}/>
+            <StyledTextarea
+                type="textarea"
+                value={text}
+                onChange={handleChangeText}
+            />
             <StyledButton type="submit">작성</StyledButton>
         </StyledForm>
     );
 });
 
 CommentForm.defaultProps = {
-    parentId: 0
+    parentId: 0,
 };
 
 CommentForm.propTypes = {
-    rideId: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string
-    ]).isRequired,
-    parentId: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string
-    ]),
-    setComments: PropTypes.func.isRequired
+    rideId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+    parentId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    setComments: PropTypes.func.isRequired,
 };
 
 export default CommentForm;
