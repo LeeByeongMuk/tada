@@ -2,15 +2,15 @@ import '@/bootstrap';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import { Reset } from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
-
-import configureStore from '@/stores';
-import reducers from '@/reducers/user';
+import rootReducer from '@/modules';
 import Routes from '@/routes';
 
-const store = configureStore(reducers);
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 const GlobalStyle = createGlobalStyle` // TODO: 추후 수정
     body {
         width: 100%;

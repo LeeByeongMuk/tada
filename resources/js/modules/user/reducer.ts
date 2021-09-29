@@ -1,10 +1,9 @@
-import { combineReducers } from 'redux';
 import {
     LOGIN_NON,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-} from '@/actions/user';
+} from '@/modules/user/constant';
 
 interface Action {
     type: string;
@@ -22,9 +21,7 @@ const userReducer = (state = defaultState, action: Action) => {
         case LOGIN_NON:
             return {
                 ...state,
-                fetchingUpdate: false,
-                isLoggedIn: false,
-                info: {},
+                ...defaultState,
             };
         case LOGIN_REQUEST:
             return {
@@ -47,6 +44,4 @@ const userReducer = (state = defaultState, action: Action) => {
     }
 };
 
-export default combineReducers({
-    user: userReducer,
-});
+export default userReducer;

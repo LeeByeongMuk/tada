@@ -1,14 +1,13 @@
 import React, { memo, useCallback } from 'react';
 import styled, { css } from 'styled-components';
-import { compose } from 'redux';
-import { connect, useDispatch } from 'react-redux';
-import { withRouter, Link, useHistory } from 'react-router-dom';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import Heading from '@components/UI/atoms/Heading';
 import Button from '@components/UI/atoms/Button';
 import font from '@/styles/font';
 import color from '@/styles/color';
 
-import { logout } from '@/actions/user';
+import { logout } from '@/modules/user/action';
 
 const StyledHeader = styled.header`
     display: flex;
@@ -91,11 +90,13 @@ const mapStateToProps = state => {
     };
 };
 
-const MyPageHeader = memo(({ ...props }) => {
-    let history = useHistory();
+const MyPageHeader = memo(() => {
+    const history = useHistory();
     const dispatch = useDispatch();
-    const user = props.user.info;
-    const { name } = user;
+    const user = useSelector(store => {
+        return store.user;
+    });
+    const { name } = user.info;
 
     const handleLogout = useCallback(event => {
         event.preventDefault();
@@ -123,4 +124,4 @@ const MyPageHeader = memo(({ ...props }) => {
     );
 });
 
-export default compose(withRouter, connect(mapStateToProps))(MyPageHeader);
+export default connect(mapStateToProps)(MyPageHeader);

@@ -1,11 +1,37 @@
 import axios from 'axios';
+import { getUserStatus, loginApi, logoutApi } from '@/api/userApi';
 import storage from '@/utils/storage';
-import { loginApi, logoutApi, getUserStatus } from '@/api/userApi';
+import {
+    LOGIN_FAILURE,
+    LOGIN_NON,
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+} from '@/modules/user/constant';
 
-const LOGIN_NON = 'LOGIN_NON';
-const LOGIN_REQUEST = 'LOGIN_REQUEST';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_FAILURE = 'LOGIN_FAILURE';
+const loginNon = () => {
+    return {
+        type: LOGIN_NON,
+    };
+};
+
+const loginRequest = () => {
+    return {
+        type: LOGIN_REQUEST,
+    };
+};
+
+const loginSuccess = (info: any) => {
+    return {
+        type: LOGIN_SUCCESS,
+        info,
+    };
+};
+
+const loginFailure = () => {
+    return {
+        type: LOGIN_FAILURE,
+    };
+};
 
 const login = (email: string, password: string): any => {
     return async (dispatch: any) => {
@@ -86,42 +112,13 @@ const logout = () => {
     };
 };
 
-function loginNon() {
-    return {
-        type: LOGIN_NON,
-    };
-}
-
-function loginRequest() {
-    return {
-        type: LOGIN_REQUEST,
-    };
-}
-
-function loginSuccess(info: any) {
-    return {
-        type: LOGIN_SUCCESS,
-        info,
-    };
-}
-
-function loginFailure() {
-    return {
-        type: LOGIN_FAILURE,
-    };
-}
-
 export {
-    LOGIN_NON,
-    LOGIN_REQUEST,
-    LOGIN_FAILURE,
-    LOGIN_SUCCESS,
-    login,
-    saveLoggedToken,
-    saveLoggedInfo,
-    logout,
     loginNon,
     loginRequest,
     loginSuccess,
     loginFailure,
+    login,
+    saveLoggedToken,
+    saveLoggedInfo,
+    logout,
 };

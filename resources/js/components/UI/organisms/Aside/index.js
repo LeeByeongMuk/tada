@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { logout } from '@/actions/user';
+import { logout } from '@/modules/user/action';
 import color from '@/styles/color';
 import font from '@/styles/font';
 
