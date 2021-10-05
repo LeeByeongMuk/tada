@@ -1,4 +1,4 @@
-import request from '@/api/request';
+import request from '@/utils/request';
 
 const getListUrl = '/api/ride';
 const getCreateListUrl = '/api/account/manage';

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Input from '@components/UI/atoms/Input';
 import Label from '@components/UI/atoms/Label';
 import color from '@/styles/color';
-import request from '@/api/request';
+import request from '@/utils/request';
 
 const FileWrapper = styled.div`
     overflow: hidden;

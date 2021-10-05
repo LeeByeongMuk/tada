@@ -1,4 +1,4 @@
-import request from '@/api/request';
+import request from '@/utils/request';
 
 const commentCreateUrl = '/api/comment';
 const commentCreate = async ({ ...options }) => {

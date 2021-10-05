@@ -3,16 +3,10 @@ import axios from 'axios';
 const request = async (options: object) => {
     try {
         const response = await axios(options);
-        const { statusText } = response;
-
-        if (statusText === 'OK') {
-            return {
-                isError: false,
-                ...response.data,
-            };
-        } else {
-            throw response;
-        }
+        return {
+            isError: false,
+            ...response.data,
+        };
     } catch (err: any) {
         const message = err.err.response.data.message;
         return {

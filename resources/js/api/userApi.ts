@@ -1,4 +1,4 @@
-import request from '@/api/request';
+import request from '@/utils/request';
 
 const getUserStatusUrl = '/api/user';
 const getUserStatus = async () => {
@@ -7,16 +7,10 @@ const getUserStatus = async () => {
             method: 'get',
             url: getUserStatusUrl,
         });
-        const { isError } = response;
-
-        if (!isError) {
-            return {
-                success: true,
-                data: response,
-            };
-        } else {
-            throw response.response.data;
-        }
+        return {
+            success: true,
+            data: response,
+        };
     } catch (err) {
         return {
             success: false,
@@ -33,16 +27,10 @@ const loginApi = async ({ ...options }) => {
             url: loginApiUrl,
             ...options,
         });
-        const { isError } = response;
-
-        if (!isError) {
-            return {
-                success: true,
-                data: response,
-            };
-        } else {
-            throw response.response.data;
-        }
+        return {
+            success: true,
+            data: response,
+        };
     } catch (err) {
         return {
             success: false,
@@ -59,16 +47,10 @@ const registerApi = async ({ ...options }) => {
             url: registerApiUrl,
             ...options,
         });
-        const { isError } = response;
-
-        if (!isError) {
-            return {
-                success: true,
-                data: response,
-            };
-        } else {
-            throw response.response.data;
-        }
+        return {
+            success: true,
+            data: response,
+        };
     } catch (err) {
         return {
             success: false,
@@ -85,16 +67,10 @@ const userEditApi = async ({ ...options }) => {
             url: userEditApiUrl,
             ...options,
         });
-        const { isError } = response;
-
-        if (!isError) {
-            return {
-                success: true,
-                data: response,
-            };
-        } else {
-            throw response.response.data;
-        }
+        return {
+            success: true,
+            data: response,
+        };
     } catch (err) {
         return {
             success: false,
@@ -110,16 +86,10 @@ const logoutApi = async () => {
             method: 'post',
             url: logoutApiUrl,
         });
-        const { isError } = response;
-
-        if (!isError) {
-            return {
-                success: true,
-                data: response,
-            };
-        } else {
-            throw response.response.data;
-        }
+        return {
+            success: true,
+            data: response,
+        };
     } catch (err) {
         return {
             success: false,
