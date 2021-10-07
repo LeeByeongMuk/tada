@@ -1,5 +1,5 @@
-interface GetKey {
-    (key: string): void;
+interface GetKey<T> {
+    (key: string): T;
 }
 
 interface GetKeyValue {
@@ -8,8 +8,8 @@ interface GetKeyValue {
 
 interface Storage {
     set: GetKeyValue;
-    get: GetKey;
-    remove: GetKey;
+    get: GetKey<object>;
+    remove: GetKey<void>;
 }
 
 const storage: Storage = {
@@ -20,11 +20,7 @@ const storage: Storage = {
         }
     },
     get: (key: string) => {
-        if (!localStorage) return null;
-
-        if (!localStorage[key]) {
-            return null;
-        }
+        if (!localStorage || !localStorage[key]) return null;
 
         try {
             return JSON.parse(localStorage[key]);
